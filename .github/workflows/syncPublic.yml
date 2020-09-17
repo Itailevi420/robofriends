@@ -1,0 +1,15 @@
+name: Sync Public with master branch
+on:
+  push:
+    branches:
+      - master
+jobs:
+  updatePublic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Git
+        uses: git checkout public && sleep 4 && git fetch origin master && sleep 7 && git merge origin master

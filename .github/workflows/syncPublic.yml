@@ -17,4 +17,6 @@ jobs:
           date > generated.txt
           git config user.name github-actions
           git config user.email github-actions@github.com
+          git checkout public
           git pull origin master
+          git push -u origin public

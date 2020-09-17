@@ -8,8 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Git
-        uses: git checkout public && sleep 4 && git fetch origin master && sleep 7 && git merge origin master
+        uses: actions/checkout@v2
+        with:
+          repository: 'Itailevi420/robofriends'
+          ref: 'public'
+          fetch-depth: '0'
+      - run: |
+          date > generated.txt
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git fetch origin master
+          git merge origin master
